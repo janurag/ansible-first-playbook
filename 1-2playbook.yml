@@ -1,0 +1,7 @@
+---
+- hosts: analytics 
+  tasks:
+    - shell: su node -c && pwd > node_path.txt  
+      register: whoami   
+      sudo: yes
+    - debug: msg="{{ whoami.stdout }}" 

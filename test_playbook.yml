@@ -1,0 +1,14 @@
+---
+- hosts: analytics
+  tasks:
+    - name: cd into project
+      shell: cd /home/anurag/test_repo 
+
+    - name: Pull development branch
+      shell: git pull origin dev
+
+    - name: Running npm install 
+      shell: npm install
+
+    - name: running App with pm2
+      shell: NODE_ENV='development' pm2 start --name 'test_ansible' app.js --log-date-format "YYYY-MM-DD HH:mm Z"

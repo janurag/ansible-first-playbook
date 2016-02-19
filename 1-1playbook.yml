@@ -1,0 +1,12 @@
+---
+- hosts: analytics
+  tasks:
+    - name: path file
+      shell: pwd > node_path.txt
+
+    - name: Pull development branch
+      git: repo=https://jugnooanurag:fusion123@bitbucket.org/jugnooanurag/test_repo.git dest=/home/anurag/test_repo accept_hostkey=yes version=dev 
+    
+    - name: cd into project
+      shell: cd /home/anurag/test_repo && npm install && NODE_ENV='development' pm2 restart 0
+
